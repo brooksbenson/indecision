@@ -1,50 +1,36 @@
 'use strict';
 
-var count = 0;
-var minusOne = function minusOne() {
-  return count--;
-};
-var reset = function reset() {
-  return count = 0;
-};
-var addOne = function addOne() {
-  return count++;
-};
-var counter = React.createElement(
-  'main',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    'Counter'
-  ),
-  React.createElement(
-    'h3',
-    null,
-    ' Count: ',
-    count,
-    ' '
-  ),
-  React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'button',
-      { onClick: minusOne },
-      ' -1 '
-    ),
-    React.createElement(
-      'button',
-      { onClick: reset },
-      ' Reset '
-    ),
-    React.createElement(
-      'button',
-      { onClick: addOne },
-      ' +1 '
-    )
-  )
-);
+var app = new Object();
+app.title = 'Toggle Visibility';
+app.show = true;
+app.details = 'Hey, here are some details.';
 
-var appRoot = document.getElementById('app');
-ReactDOM.render(counter, appRoot);
+var toggleDetails = function toggleDetails() {
+  app.show = !app.show;
+  renderApp();
+};
+
+var renderApp = function renderApp() {
+  var template = React.createElement(
+    'main',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      app.title
+    ),
+    React.createElement(
+      'button',
+      { onClick: toggleDetails },
+      'Toggle Visibility'
+    ),
+    app.show && React.createElement(
+      'p',
+      null,
+      app.details
+    )
+  );
+  ReactDOM.render(template, document.getElementById('app'));
+};
+
+renderApp();

@@ -6,7 +6,7 @@
   "author": "Brooks",
   "license": "MIT",
   "scripts": {
-    "translate": "babel ./public/src/app.js --out-file=./public/app.js --presets=react,env --watch",
+    "translate": "babel ./public/src/playground/toggle-visibility.js --out-file=./public/app.js --presets=react,env --watch",
     "start": "live-server ./public"
   },
   "devDependencies": {
