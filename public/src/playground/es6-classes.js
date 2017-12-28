@@ -28,5 +28,12 @@ class Student extends Person { //extends specifies Student as the child of Perso
   }
 }
 
-const brooks = new Student('Brooks Benson', 22, 'English');
-const random = new Student();
+class Traveler extends Person {
+  constructor(name, age, homeLocation = 'Earth') {
+    super(name, age);
+    this.homeLocation = homeLocation;
+  }
+  greeting() {
+    return `${super.greeting()} I am from ${this.location}`;
+  }
+}
