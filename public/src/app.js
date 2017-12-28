@@ -28,10 +28,14 @@ class Header extends React.Component {
 };
 
 class Action extends React.Component {
+  handleRemoveAll() {
+    console.log('executed successfully');
+  }
   render() {
     return (
       <div>
         <button> Make my choice </button>
+        <button onClick={this.handleRemoveAll}> Remove all </button>
       </div>
     );
   }
@@ -58,9 +62,14 @@ class Options extends React.Component {
 };
 
 class AddOption extends React.Component {
+  createOption(e) {
+    e.preventDefault();
+    const {value} = e.target.elements.option;
+    e.target.elements.option.value = '';
+  }
   render() {
     return (
-      <form>
+      <form onSubmit={this.createOption}>
         <input type='text' name='option' />
         <button>Submit</button>
       </form>

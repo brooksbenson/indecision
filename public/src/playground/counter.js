@@ -1,32 +1,53 @@
-let count = 0;
+class Counter extends React.Component {
 
-const minusOne = () => {
-  count--;
-  renderApp();
-};
-const reset = () => {
-  count = 0;
-  renderApp();
-};
-const addOne = () => {
-  count++;
-  renderApp();
+  constructor(props) {
+    super(props);
+    this.minusOne = this.minusOne.bind(this);
+    this.reset = this.reset.bind(this);
+    this.addOne = this.addOne.bind(this);
+    this.state = {
+      count: 0
+    };
+  }
+
+  minusOne() {
+    this.setState((prevState) => {
+      return {
+        count: prevState.count - 1
+      };
+    });
+  }
+
+  reset() {
+    this.setState(() => {
+      return {
+        count: 0
+      };
+    });
+  }
+
+  addOne() {
+    this.setState((prevState) => {
+      return {
+        count: prevState.count + 1
+      };
+    });
+  }
+
+  render() {
+    return (
+      <main>
+        <h1> Sick Counter App! </h1>
+        <h3> Count: {this.state.count} </h3>
+        <div>
+          <button onClick={this.minusOne}>-1</button>
+          <button onClick={this.reset}>Reset</button>
+          <button onClick={this.addOne}>+1</button>
+        </div>
+      </main>
+    );
+  }
+
 };
 
-const appRoot = document.getElementById('app');
-const renderApp = () => {
-  const counter = (
-    <main>
-      <h1>Counter</h1>
-      <h3> Count: {count} </h3>
-      <div>
-        <button onClick={minusOne}> -1 </button>
-        <button onClick={reset}> Reset </button>
-        <button onClick={addOne}> +1 </button>
-      </div>
-    </main>
-  );
-  ReactDOM.render(counter, appRoot);
-};
-
-renderApp();
+ReactDOM.render(<Counter />, document.getElementById('app'));
