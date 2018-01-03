@@ -6,7 +6,8 @@
   "author": "Brooks",
   "license": "MIT",
   "scripts": {
-    "translate": "babel ./public/src/playground/counter.js --out-file=./public/app.js --presets=react,env --watch",
+    "build": "webpack",
+    "babel-build": "babel ./public/src/playground/counter.js --out-file=./public/app.js --presets=react,env --watch",
     "start": "live-server ./public"
   },
   "devDependencies": {
@@ -14,5 +15,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "live-server": "^1.2.0"
+  },
+  "dependencies": {
+    "webpack": "^3.10.0"
   }
 }
