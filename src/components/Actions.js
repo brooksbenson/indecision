@@ -4,12 +4,12 @@ class Actions extends Component {
   render() {
     return (
       <div>
-        <button>
-          Make Decision!
+        <button 
+          disabled={!this.props.hasOptions}
+          onClick={this.props.handleDecision}> 
+        Make Decision
         </button>
-        <button>
-          Remove All!
-        </button>
+        {this.props.hasOptions && <button onClick={this.props.handleRemoveAll}> Remove All! </button>}
       </div>
     );
   }
