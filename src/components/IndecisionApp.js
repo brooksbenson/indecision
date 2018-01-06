@@ -4,36 +4,18 @@ import Header from './Header';
 import Actions from './Actions';
 import Options from './Options';
 import AddOption from './AddOption';
+import OptionModal from './OptionModal';
 
 class IndecisionApp extends Component {
-  constructor() {
-    super();
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.handleDecision = this.handleDecision.bind(this);
-    this.handleRemoveAll = this.handleRemoveAll.bind(this);
-    this.handleRemoveOne = this.handleRemoveOne.bind(this);
-    this.state = {
-      options: [] 
-    }
-  }
 
-  componentWillMount() {
-    try {
-      const options = JSON.parse(localStorage.getItem('options'));
-      if (options) this.setState(() => ({options}));
-    } catch (e) {
-      //do nothing
-    }
-  }
+  state = {
+    options: [],
+    selectedOption: ''
+  };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.options.length !== this.state.options.length) {
-      const json = JSON.stringify(this.state.options);
-      localStorage.setItem('options', json);
-    }
-  }
+  //event handlers
 
-  handleAddOption(option) {
+  handleAddOption = (option) => {
     let result;
     const isValid = !this.state.options.includes(option);
     if (isValid) {
@@ -44,23 +26,45 @@ class IndecisionApp extends Component {
       result = 'Invalid';
     }
     return result;
-  }
+  };
 
-  handleDecision() {
+  handleDecision = () => {
     const {length} = this.state.options;
-    const decision = Math.floor(Math.random() * length);
-    alert(this.state.options[decision]);
-  }
+    const idx = Math.floor(Math.random() * length);
+    const selectedOption = this.state.options[idx];
+    this.setState(() => ({selectedOption}));
+  };
 
-  handleRemoveAll() {
+  handleRemoveAll = () => {
     const options = [];
     this.setState(() => ({options}));
-  }
+  };
 
-  handleRemoveOne(idx) {
+  handleRemoveOne = (idx) => {
     let options = JSON.parse(JSON.stringify(this.state.options));
     options.splice(idx, 1);
     this.setState(() => ({options}));
+  };
+
+  handleClearSelectedOption = () => {
+    this.setState(() => ({selectedOption: null}));
+  }
+
+  //lifecycle methods
+
+  componentDidMount() {
+    try {
+      const options = JSON.parse(localStorage.getItem('options'));
+      if (options) this.setState(() => ({options}));
+    } catch (e) {
+      //do nothing
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem('options', json);
+    }
   }
 
   render() {
@@ -76,7 +80,13 @@ class IndecisionApp extends Component {
           options={this.state.options} 
           handleRemoveOne={this.handleRemoveOne}
         />
-        <AddOption handleAddOption={this.handleAddOption} />
+        <AddOption 
+          handleAddOption={this.handleAddOption} 
+        />
+        <OptionModal 
+          selectedOption={this.state.selectedOption}
+          handleClearSelectedOption={this.handleClearSelectedOption}
+        />
       </div>
     )
   }

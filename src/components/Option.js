@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 
 class Option extends Component {
-  constructor(props) {
-    super(props);
-    this.initiateRemoval = this.initiateRemoval.bind(this);
-  }
 
-  initiateRemoval() {
+  initiateRemoval = () => {
     const {idx} = this.props;
     this.props.removeSelf(idx);
   }
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    console.log(this.props);
     return (
       <li>
         {this.props.text}

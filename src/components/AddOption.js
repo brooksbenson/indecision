@@ -18,7 +18,7 @@ class AddOption extends Component {
     const result = this.props.handleAddOption(option);
     if (result === 'valid') {
       e.target.elements.option.value = '';
-      buttonDisabled = true;
+      error = null;
     } else {
       error = 'That option already exists';
     }
