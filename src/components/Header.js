@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Header = () => (
-  <header>
-    <h1> Indecision </h1>
-    <p> Put your life in the hands of a computer </p>
+  <header className='header'>
+    <h1 className='header__title'> Indecision </h1>
+    <p className='header__subtitle'> Put your life in the hands of a computer </p>
   </header>
 );
 
