@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 
 class AddOption extends Component {
-  constructor(props) {
-    super(props);
-    this.initiateAddOption = this.initiateAddOption.bind(this);
-    this.evaluateButtonState = this.evaluateButtonState.bind(this);
-    this.state = {
-      error: null,
-      buttonDisabled: true
-    }
-  }
 
-  initiateAddOption(e) {
+  state = {
+    error: null,
+    buttonDisabled: true
+  };
+
+  //event handlers
+
+  initiateAddOption = (e) => {
     e.preventDefault();
     let error, buttonDisabled;
     const option  = e.target.elements.option.value;
@@ -23,15 +21,21 @@ class AddOption extends Component {
       error = 'That option already exists';
     }
     this.setState(() => ({error, buttonDisabled}));
-  }
+  };
 
-  evaluateButtonState(e) {
+  evaluateButtonState = (e) => {
     const optionText = e.target.value;
     let buttonDisabled;
     optionText.length === 0
       ? buttonDisabled = true
       : buttonDisabled = false;
     this.setState(() => ({buttonDisabled}));
+  };
+
+  //component methods
+
+  constructor(props) {
+    super(props);
   }
 
   render() {

@@ -7,10 +7,6 @@ class Option extends Component {
     this.props.removeSelf(idx);
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <li>

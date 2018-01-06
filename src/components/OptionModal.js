@@ -1,11 +1,14 @@
 import React from 'react';
 import Modal from 'react-modal';
 
+Modal.setAppElement('#app');
+
 const OptionModal = (props) => {
   return (
     <Modal
       contentLabel="Selected Option"
       isOpen={!!props.selectedOption}
+      onRequestClose={props.handleClearSelectedOption}
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}
     >

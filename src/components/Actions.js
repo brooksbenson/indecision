@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
 
-class Actions extends Component {
-  render() {
-    return (
-      <div>
-        <button 
-          disabled={!this.props.hasOptions}
-          onClick={this.props.handleDecision}> 
-        Make Decision
-        </button>
-        {this.props.hasOptions && <button onClick={this.props.handleRemoveAll}> Remove All! </button>}
-      </div>
-    );
-  }
-};
+const Actions = (props) => (
+  <div>
+    <button 
+      disabled={!props.hasOptions}
+      onClick={props.handleDecision}> 
+    Make Decision
+    </button>
+    {props.hasOptions && <button onClick={props.handleRemoveAll}> Remove All! </button>}
+  </div>
+);
 
 export default Actions;
