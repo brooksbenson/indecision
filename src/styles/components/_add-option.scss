@@ -1,0 +1,23 @@
+.add-option {
+  background: $light-blue;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $m-size;
+
+  &__input {
+    flex-grow: 1;
+    background: $dark-blue;
+    border: none;
+    color: $off-white;
+    margin-right: $s-size;
+    padding-left: $s-size;
+  }
+
+  &__error {
+    color: $off-white;
+    font-style: italic;
+    flex-basis: 100%;
+    padding-bottom: .5rem;
+    border-bottom: .1rem solid lighten($light-blue, 10%);
+  }
+}

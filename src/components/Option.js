@@ -10,7 +10,7 @@ class Option extends Component {
   render() {
     return (
       <li className='option'>
-        <p>{this.props.text}</p>
+        <p className='option__text'>{this.props.idx + 1}. {this.props.text}</p>
         <button 
           className='button button--link'
           onClick={this.initiateRemoval}

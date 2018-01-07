@@ -23,13 +23,13 @@ class AddOption extends Component {
     this.setState(() => ({error, buttonDisabled}));
   };
 
-  evaluateButtonState = (e) => {
+  evaluateState = (e) => {
     const optionText = e.target.value;
-    let buttonDisabled;
+    let buttonDisabled, error;
     optionText.length === 0
       ? buttonDisabled = true
       : buttonDisabled = false;
-    this.setState(() => ({buttonDisabled}));
+    this.setState(() => ({buttonDisabled, error}));
   };
 
   //component methods
@@ -40,9 +40,15 @@ class AddOption extends Component {
 
   render() {
     return (
-      <form onSubmit={this.initiateAddOption}>
-        <input type="text" name="option" onChange={this.evaluateButtonState}/>
-        {this.state.error && <p> {this.state.error} </p>}
+      <form onSubmit={this.initiateAddOption} className="add-option">
+        {this.state.error && <p className="add-option__error"> {this.state.error} </p>}
+        <input 
+          className="add-option__input" 
+          type="text" 
+          name="option" 
+          autoComplete="off"
+          onChange={this.evaluateState}
+        />
         <button 
           disabled={this.state.buttonDisabled}
           className='button'

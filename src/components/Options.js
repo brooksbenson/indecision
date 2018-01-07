@@ -9,11 +9,14 @@ const Options = (props) => {
         <h3 className='options__title'>
           Your Options
         </h3>
-        <button
-          className='button button--link'
-          onClick={props.handleRemoveAll}> 
-          Remove All
-        </button>
+        {
+          props.options.length > 0 && 
+          <button
+            className='button button--link'
+            onClick={props.handleRemoveAll}> 
+            Remove All
+          </button>
+        }
       </header>
 
       {props.options.length == 0 && <p className='options__msg'>Add an option to get started!</p>}
