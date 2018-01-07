@@ -9,9 +9,14 @@ class Option extends Component {
 
   render() {
     return (
-      <li>
-        {this.props.text}
-        <button onClick={this.initiateRemoval}> X </button>
+      <li className='option'>
+        <p>{this.props.text}</p>
+        <button 
+          className='button button--link'
+          onClick={this.initiateRemoval}
+        >
+        Remove
+        </button>
       </li>
     );
   }
