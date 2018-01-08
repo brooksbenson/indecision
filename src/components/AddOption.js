@@ -17,6 +17,7 @@ class AddOption extends Component {
     if (result === 'valid') {
       e.target.elements.option.value = '';
       error = null;
+      buttonDisabled = true;
     } else {
       error = 'That option already exists';
     }

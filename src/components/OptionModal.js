@@ -6,15 +6,16 @@ Modal.setAppElement('#app');
 const OptionModal = (props) => {
   return (
     <Modal
+      className="modal"
       contentLabel="Selected Option"
       isOpen={!!props.selectedOption}
       onRequestClose={props.handleClearSelectedOption}
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}
-    >
-    <h3>Selected Option</h3>
-    <p>{props.selectedOption}</p>
-    <button onClick={props.handleClearSelectedOption}>Ok</button>
+      closeTimeoutMS={200}>
+      <h3 className="modal__title">Selected Option</h3>
+      <p className="modal__body">{props.selectedOption}</p>
+      <button className="button" onClick={props.handleClearSelectedOption}>Ok</button>
     </Modal>
   )
 }
