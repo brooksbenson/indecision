@@ -21,6 +21,7 @@ module.exports = {
           'sass-loader'
         ]
       }
+
     ]
   },
   devtool: 'cheap-module-eval-source-map',
